@@ -19,10 +19,13 @@ const devWebpackConfig = {
     disableHostCheck: true,
   },
   stats:{
-    modules: true,
-    children: true,
-    chunks: true,
-    chunkModules: true
+    all: false,
+    errors: true,
+    timings: true
+    // modules: true,
+    // children: true,
+    // chunks: true,
+    // chunkModules: true
   },
   entry: {
     bundle: [

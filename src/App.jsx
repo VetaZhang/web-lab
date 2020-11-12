@@ -3,17 +3,16 @@ import { Route, Switch } from 'react-router-dom';
 import { hot } from "react-hot-loader/root";
 
 const Hello = lazy(() => import(/* webpackChunkName: 'hello' */ './containers/Hello'));
-const MyContest = lazy(() => import(/* webpackChunkName: 'context' */ './containers/Context'));
+const MyContext = lazy(() => import(/* webpackChunkName: 'context' */ './containers/Context'));
+const Iframe = lazy(() => import(/* webpackChunkName: 'iframe' */ './containers/Iframe'));
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (<Suspense fallback={null}>
       <Switch>
         <Route path="/hello" component={Hello} />
-        <Route path="/context" component={MyContest} />
+        <Route path="/context" component={MyContext} />
+        <Route path="/iframe" component={Iframe} />
       </Switch>
     </Suspense>);
   }
