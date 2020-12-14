@@ -9,8 +9,9 @@ module.exports = {
     ],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      'react-gs': path.resolve('./src/globalState'),
       utils: path.resolve('./src/utils'),
+      actions: path.resolve('./src/redux/actions'),
+      reducers: path.resolve('./src/redux/reducers'),
     },
   },
   module: {
