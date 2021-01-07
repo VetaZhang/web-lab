@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import rootReducer from './reducers';
+import logAction from './middleware/logAction';
 
 const reducers = combineReducers(rootReducer);
-const middleware = applyMiddleware();
+const middleware = applyMiddleware(logAction);
 const devtoolValid = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__;
 const enhance = devtoolValid ? compose(middleware, window.__REDUX_DEVTOOLS_EXTENSION__()) : middleware;
 
