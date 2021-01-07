@@ -9,6 +9,8 @@ module.exports = {
     ],
     alias: {
       'react-dom': '@hot-loader/react-dom',
+      containers: path.resolve('./src/containers'),
+      components: path.resolve('./src/components'),
       utils: path.resolve('./src/utils'),
       actions: path.resolve('./src/redux/actions'),
       reducers: path.resolve('./src/redux/reducers'),
