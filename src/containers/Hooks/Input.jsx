@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 
-function useDebounce(fn, val) {
+function useDebounceSet(val, fn) {
+  const [value, setValue] = useState(val);
   const [timer, setTimer] = useState(null);
 
   useEffect(() => {
@@ -9,28 +10,19 @@ function useDebounce(fn, val) {
       setTimer(null);
     }
     setTimer(setTimeout(() => {
-      fn && fn();
-    }, 1000));
-  }, [val]);
+      fn && fn(value);
+    }, 200));
+  }, [value]);
+
+  return [value, setValue];
 }
 
 function Input({ value, onChange, onEnter }) {
-  const [val, setVal] = useState(value);
-  // const onChangeDebounce = useDebounce();
-
-  useDebounce((val) => onChange(val), val);
-
-  function handleChange(val) {
-    setVal(val);
-    // onChangeDebounce((val) => onChange(val), 1000);
-    // useDebounce(() => {
-    //   onChange && onChange(val);
-    // });
-  }
+  const [val, setVal] = useDebounceSet(value, (newValue) => onChange(newValue)); 
 
   return <input
     value={val}
-    onChange={(e) => handleChange(e.target.value)}
+    onChange={(e) => setVal(e.target.value)}
   />;
 }
 
